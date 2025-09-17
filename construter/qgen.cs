@@ -1,78 +1,64 @@
 class Queue<T>
 {
-    private class Node
-    {
-        public T data;
-        public Node next;
+	private T []Q;
+	
+	int front = 0;
+	int rear=0;
+	public Queue(int size)
+	{
+		Q=new T[size];
+	}
+	public void enqueue(T val)
+	{
+		Q[rear]=val;
+		rear++;
+		
+	}
+	
+	public T dequeue()
+	{
+		return Q[front++];
+	}
+	
+		
+	public bool isempty()
+	{
+		
+		if(front<rear)
+			
+			return false;
+		return true;
+	}
 
-        public Node(T val)
-        {
-            data = val;
-            next = null;
-        }
-    }
-    private Node front, rear;
-    public Queue()
-    {
-        front = rear = null;
-    }
-    public void Enqueue(T val)
-    {
-        Node newNode = new Node(val);
-        if (IsEmpty())
-        {
-            front = rear = newNode;
-        }
-        else
-        {
-            rear.next = newNode;
-            rear = newNode;
-        }
-    }
-    public T Dequeue()
-    {
-        if (IsEmpty())
-        {
-            System.Console.WriteLine("Queue Underflow!");
-            return default(T);
-        }
+	
+}	
 
-        T val = front.data;
-        front = front.next;
-        if (front == null)
-        {
-            rear = null;
-        }
-
-        return val;
-    }
-    public T Peek()
-    {
-        if (IsEmpty())
-        {
-            System.Console.WriteLine("Queue is Empty!");
-            return default(T);
-        }
-        return front.data;
-    }
-    public bool IsEmpty()
-    {
-        return front == null;
-    }
-}
-class Lap
-{
-    public static void Main()
-    {
-        Queue<int> q = new Queue<int>();
-        q.Enqueue(10);
-        q.Enqueue(20);
-        q.Enqueue(30);
-        q.Enqueue(40);
-        q.Enqueue(50);
-        while (!q.IsEmpty())
-        {
-            System.Console.WriteLine(q.Dequeue());
-        }
-    }
+class lap
+{	
+	public static void Main()
+	{
+	
+		Queue<int> Q=new Queue<int>(10);
+		Queue<string> Qs=new Queue<string>(10);
+		Q.enqueue(110);
+		Q.enqueue(220);
+		Q.enqueue(330);
+		Q.enqueue(440);
+		Q.enqueue(550);
+		Qs.enqueue("ramu");
+		Qs.enqueue("tarun");
+		Qs.enqueue("madhan");
+		Qs.enqueue("krithuka");
+		Qs.enqueue("shambala");
+		while(!(Q.isempty()))
+		{
+		
+			System.Console.WriteLine(Q.dequeue());
+		}
+		while(!(Qs.isempty()))
+		{
+		
+			System.Console.WriteLine(Qs.dequeue());
+		}
+	}
 }
