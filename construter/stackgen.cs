@@ -1,68 +1,59 @@
 class Stack<T>
 {
-    private class Node
-    {
-        public T data;
-        public Node next;
-
-        public Node(T val)
-        {
-            data = val;
-            next = null;
-        }
-    }
-    private Node top;
-    public Stack()
-    {
-        top = null;
-    }
-    public void Push(T val)
-    {
-        Node newNode = new Node(val);
-        newNode.next = top;
-        top = newNode;
-    }
-    public T Pop()
-    {
-        if (IsEmpty())
-        {
-            System.Console.WriteLine("Stack Underflow!");
-            return default(T);
-        }
-
-        T val = top.data;
-        top = top.next;
-        return val;
-    }
-    public T Peek()
-    {
-        if (IsEmpty())
-        {
-            System.Console.WriteLine("Stack is Empty!");
-            return default(T);
-        }
-
-        return top.data;
-    }
-    public bool IsEmpty()
-    {
-        return top == null;
-    }
+	
+	private T []s;
+	int i;
+	public Stack(int val)
+	{
+		s=new T[val];
+	}
+	public void push(T value)
+	{
+			s[i]=value;
+			i++;
+	}	
+	public T pop()
+	{
+		return s[i--];
+	}
+	public bool isEmpty()
+	{
+		if(i>=0)
+			return false;
+		return true;
+	}
 }
-
-class Lap
+class program
 {
-    public static void Main()
-    {
-        Stack<int> s = new Stack<int>();
-        s.Push(101);
-        s.Push(202);
-        s.Push(303);
-        s.Push(404);
-        s.Push(505);
-        while (!s.IsEmpty())
-        {
-            System.Console.WriteLine(s.Pop());
-        }
-    }
+	public static void Main()
+	{
+		int r;
+		Stack<int> s=new Stack<int>(10);
+		Stack<string> ss=new Stack<string>(10);
+		s.push(101);
+		s.push(202);
+		s.push(303);
+		s.push(404);
+		s.push(505);
+		ss.push("kiran");
+		ss.push("jackie");
+		ss.push("ravi");
+		ss.push("ramu");
+		ss.push("sai");
+		
+		while(!(s.isEmpty()))
+		{
+				
+				r=s.pop();
+				System.Console.WriteLine(r);
+
+		}
+		
+		while(!(ss.isEmpty()))
+		{
+				
+				System.Console.WriteLine(ss.pop());
+
+		}
+	}
 }
